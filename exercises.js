@@ -2,8 +2,17 @@
 
 function bubbleSort(arr) {
     const n = arr.length;
-
     // TODO: Implement the Bubble Sort algorithm
+    for(let i = 0; i < n - 1; i++) {
+        for(let j = 0; j< N - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                //Swap arr[j] and arr[j + 1]
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
 
     return arr;
 }
@@ -26,9 +35,22 @@ function selectionSortWords(arr) {
     const n = arr.length;
 
     for (let i = 0; i < n - 1; i++) {
+        let minIndex = i; // Assume the current index has the minimum word
+
         // TODO: Find the index of the minimum word in the unsorted part
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIndex]) { //Compare words alphabetically
+                minIndex = j;
+            }
+        }
+
 
         // TODO: Swap the minimum word with the first unsorted word
+        if (minIndex !== i) {
+            const temp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minImndex] = temp
+        }
     }
 
     return arr;
@@ -52,6 +74,19 @@ function insertionSortWords(arr) {
     const n = arr.length;
 
     // TODO: Implement the Insertion Sort algorithm
+    for (let i = 1; i < n; i++) {
+        let current = arr[i];//current element to be inserted
+        let j = i - 1;
+
+        //move elements of arr[0..i - 1], that are greater than current, to one position ahead of their current position
+        while (j >= 0 && arr[j] > current) {
+            arr[j + 1] = arr[j];
+            j--
+        }
+
+        arr[j + 1] = current; //Place current element at its correct position
+
+    }
 
     return arr;
 }
